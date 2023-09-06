@@ -73,7 +73,7 @@ class NaiveChunks(embodied.Replay):
       self.promises.clear()
 
   def load(self, data=None):
-    filenames = chunklib.Chunk.scan(self.directory, capacity)
+    filenames = chunklib.Chunk.scan(self.directory, self.capacity)
     if not filenames:
       return
     threads = min(len(filenames), 32)

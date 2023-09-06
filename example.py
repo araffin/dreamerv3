@@ -7,7 +7,8 @@ def main():
 
   # See configs.yaml for all options.
   config = embodied.Config(dreamerv3.configs['defaults'])
-  config = config.update(dreamerv3.configs['medium'])
+  #   config = config.update(dreamerv3.configs['medium'])
+  config = config.update(dreamerv3.configs['small'])
   config = config.update({
       'logdir': '~/logdir/run1',
       'run.train_ratio': 64,
@@ -35,7 +36,8 @@ def main():
   import crafter
   from embodied.envs import from_gym
   env = crafter.Env()  # Replace this with your Gym env.
-  env = from_gym.FromGym(env, obs_key='image')  # Or obs_key='vector'.
+#   env = from_gym.FromGym(env, obs_key='image')  # Or obs_key='vector'.
+  env = from_gym.FromGym(env, obs_key='vector')  # Or obs_key='vector'.
   env = dreamerv3.wrap_env(env, config)
   env = embodied.BatchEnv([env], parallel=False)
 
